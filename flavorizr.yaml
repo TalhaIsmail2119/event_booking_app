@@ -1,0 +1,35 @@
+app:
+  android:
+    flavorDimensions: "env"
+#  ios:
+#    targets:
+#      Runner:
+#        bundleId: "com.example.eventBookingApp"   # base bundle ID
+
+flavors:
+  dev:
+    app:
+      name: "Event Booking App Dev"
+    android:
+      applicationId: "com.example.event_booking_app.dev"
+#    ios:
+#      bundleId: "com.example.eventBookingApp.dev"
+    # icon/splash commented
+
+  staging:
+    app:
+      name: "Event Booking App Staging"
+    android:
+      applicationId: "com.example.event_booking_app.staging"
+#    ios:
+#      bundleId: "com.example.eventBookingApp.staging"
+    # icon/splash commented
+
+  prod:
+    app:
+      name: "Event Booking App"
+    android:
+      applicationId: "com.example.event_booking_app"
+#    ios:
+#      bundleId: "com.example.eventBookingApp"
+    # icon/splash commented
