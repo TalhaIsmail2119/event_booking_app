@@ -1,37 +1,31 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-
-import '../features/home/pages/my_home_page.dart';
+import 'package:go_router/go_router.dart';
+import '../config/themes/app_themes.dart';
 import 'flavors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({super.key, required this.router});
+
+  final GoRouter router;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: F.title,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      //home: _flavorBanner(child: MyHomePage(), show: kDebugMode),
-      home: MyHomePage(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: F.title,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.system,
+          routerConfig: router,
+        );
+      },
     );
   }
-
-  // Widget _flavorBanner({required Widget child, bool show = true}) => show
-  //     ? Banner(
-  //         location: BannerLocation.topStart,
-  //         message: F.name,
-  //         color: Colors.green.withAlpha(150),
-  //         textStyle: TextStyle(
-  //           fontWeight: FontWeight.w700,
-  //           fontSize: 12.0,
-  //           letterSpacing: 1.0,
-  //         ),
-  //         textDirection: TextDirection.ltr,
-  //         child: child,
-  //       )
-  //     : Container(child: child);
 }
