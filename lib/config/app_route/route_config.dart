@@ -1,4 +1,6 @@
 
+import 'package:event_booking_app/features/sign_in/sign_in_screen.dart';
+import 'package:event_booking_app/features/sign_up/sign_up_screen.dart';
 import 'package:event_booking_app/features/splash/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -32,14 +34,23 @@ final appRoute = GoRouter(
         child: const OnboardingScreen(),
       ),
     ),
-    // GoRoute(
-    //   path: AppRoutes.login,
-    //   name: AppRoutes.login,
-    //   pageBuilder: (context, state) => FadeTransitionPage(
-    //     key: state.pageKey,
-    //     child: const LoginScreen(),
-    //   ),
-    // ),
+    GoRoute(
+      path: AppRoutes.signIn,
+      name: AppRoutes.signIn,
+      pageBuilder: (context, state) => FadeTransitionPage(
+        key: state.pageKey,
+        child:  SignInScreen(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.signUp,
+      name: AppRoutes.signUp,
+      pageBuilder: (context, state) => FadeTransitionPage(
+        key: state.pageKey,
+        // child: const SignUpScreen(),
+        child:  SignUpScreen(),
+      ),
+    ),
     // GoRoute(
     //   path: AppRoutes.logout,
     //   name: AppRoutes.logout,
@@ -48,15 +59,7 @@ final appRoute = GoRouter(
     //     child: const LogoutScreen(),
     //   ),
     // ),
-    // GoRoute(
-    //   path: AppRoutes.signUp,
-    //   name: AppRoutes.signUp,
-    //   pageBuilder: (context, state) => FadeTransitionPage(
-    //     key: state.pageKey,
-    //     // child: const SignUpScreen(),
-    //     child: const SignUpPage(),
-    //   ),
-    // ),
+
 
     StatefulShellRoute.indexedStack(
       builder: (

@@ -130,7 +130,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               TextButton(
                                 onPressed: () {
                                   if (_currentIndex == data.length - 1) {
-                                    context.go(AppRoutes.home);
+                                    context.go(AppRoutes.signIn);
                                   } else {
                                     _controller.nextPage(
                                       duration: const Duration(milliseconds: 300),
