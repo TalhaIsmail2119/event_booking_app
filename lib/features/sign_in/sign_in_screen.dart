@@ -53,7 +53,6 @@ class SignInScreen extends StatelessWidget {
                 controller: emailCtrl,
               ),
               Gap(16.h),
-
               // Password
               CustomTextFormField(
                 hintText: "Your password",
@@ -74,7 +73,9 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.go(AppRoutes.resetPassword);
+                    },
                     child: Text(
                       "Forgot Password?",
                       style: TextStyle(fontSize: 12.r),

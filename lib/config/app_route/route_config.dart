@@ -1,4 +1,5 @@
 
+import 'package:event_booking_app/features/reset_password/reset_password_screen.dart';
 import 'package:event_booking_app/features/sign_in/sign_in_screen.dart';
 import 'package:event_booking_app/features/sign_up/sign_up_screen.dart';
 import 'package:event_booking_app/features/splash/pages/splash_page.dart';
@@ -11,6 +12,7 @@ import '../../core/navigator/global_keys.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/main/pages/main_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
+import '../../features/verification/verification_screen.dart';
 import 'app_routes.dart';
 
 
@@ -49,6 +51,24 @@ final appRoute = GoRouter(
         key: state.pageKey,
         // child: const SignUpScreen(),
         child:  SignUpScreen(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.resetPassword,
+      name: AppRoutes.resetPassword,
+      pageBuilder: (context, state) => FadeTransitionPage(
+        key: state.pageKey,
+        // child: const SignUpScreen(),
+        child:  ResetPasswordScreen(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.varification,
+      name: AppRoutes.varification,
+      pageBuilder: (context, state) => FadeTransitionPage(
+        key: state.pageKey,
+        // child: const SignUpScreen(),
+        child:  VerificationScreen(),
       ),
     ),
     // GoRoute(

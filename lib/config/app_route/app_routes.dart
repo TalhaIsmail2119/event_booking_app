@@ -8,6 +8,8 @@ class AppRoutes{
   static const String about = '/about';
   static const String verifyEmail = '/verifyEmail';
   static const String forgotPassword = '/forgotPassword';
+  static const String resetPassword = '/resetPassword';
+  static const String varification = '/varification';
   static const String main = '/main';
   static const String home = '/home';
 }
