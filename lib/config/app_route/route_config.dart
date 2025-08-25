@@ -9,8 +9,9 @@ import 'package:go_router/go_router.dart';import 'package:go_router/go_router.da
 
 import '../../core/navigator/global_keys.dart';
 
-import '../../features/home/home_screen.dart';
+import '../../features/home/presentation/screen/home_screen.dart';
 import '../../features/main/pages/main_screen.dart';
+import '../../features/menu/menu_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/verification/verification_screen.dart';
 import 'app_routes.dart';
@@ -69,6 +70,15 @@ final appRoute = GoRouter(
         key: state.pageKey,
         // child: const SignUpScreen(),
         child:  VerificationScreen(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.menu,
+      name: AppRoutes.menu,
+      pageBuilder: (context, state) => FadeTransitionPage(
+        key: state.pageKey,
+        // child: const SignUpScreen(),
+        child:  MenuScreen(),
       ),
     ),
     // GoRoute(
