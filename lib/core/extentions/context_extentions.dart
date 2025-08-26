@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../config/themes/app_themes.dart';
 
+
 extension ThemeColors on BuildContext {
-  CustomColors? get colors => Theme.of(this).extension<CustomColors>();
+  CustomColors get colors =>
+      Theme.of(this).extension<CustomColors>()!;
 }
 
+//---------------#####################################---------------------
+// extension ThemeColors on BuildContext {
+//   CustomColors? get colors => Theme.of(this).extension<CustomColors>();
+// }
+
+//---------------#####################################---------------------
 
 // extension ThemeColors on BuildContext {
 //   CustomColors get colors {
