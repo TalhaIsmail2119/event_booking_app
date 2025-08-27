@@ -1,8 +1,125 @@
 import 'package:event_booking_app/config/app_route/app_routes.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../domain/home_models.dart';
+
+// class HomeHeader extends StatelessWidget {
+//   final AsyncValue<List<CategoryModel>> categories;
+//   const HomeHeader({super.key, required this.categories});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Stack(
+//       clipBehavior: Clip.none,
+//       children: [
+//         // ==== Header Section ====
+//         const Header(),
+//
+//         // ==== Category Chips Floating ====
+//         Positioned(
+//           bottom: -28.h, // half over blue, half over white
+//           left: 0,
+//           right: 0,
+//           child: categories.when(
+//             data: (cats) => SingleChildScrollView(
+//               scrollDirection: Axis.horizontal,
+//               padding: EdgeInsets.symmetric(horizontal: 16.w),
+//               child: Row(
+//                 children: [
+//                   for (final c in cats)
+//                     Row(
+//                       children: [
+//                         CategoryChip(
+//                           text: c.name,
+//                           icon: _mapIcon(c.icon),   // use icon field
+//                           color: Color(c.colorHex), // use colorHex field
+//                         ),
+//                         Gap(8.w),
+//                       ],
+//                     ),
+//                 ],
+//               ),
+//             ),
+//             loading: () => const SizedBox(),
+//             error: (_, __) => const SizedBox(),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+//
+//   /// Maps backend "icon" string → Flutter IconData
+//   IconData _mapIcon(String iconName) {
+//     switch (iconName.toLowerCase()) {
+//       case "sports":
+//         return Icons.sports_basketball;
+//       case "music":
+//         return Icons.music_note;
+//       case "food":
+//         return Icons.restaurant;
+//       case "travel":
+//         return Icons.flight_takeoff;
+//       case "party":
+//         return Icons.celebration;
+//       default:
+//         return Icons.category; // fallback
+//     }
+//   }
+// }
+
+
+
+class CategoryChip extends StatelessWidget {
+  final String text;
+  final IconData icon;
+  final Color color;
+
+  const CategoryChip({
+    super.key,
+    required this.text,
+    required this.icon,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(30.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+          )
+        ],
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.white, size: 16.r),
+          Gap(6.w),
+          Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 13.r,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+}
+
 
 class Header extends StatelessWidget {
   const Header({super.key});

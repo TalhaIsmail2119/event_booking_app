@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/home_providers.dart';
 import '../widgets/category_chips.dart';
 import '../widgets/event_card.dart';
-import '../widgets/header.dart';
+import '../widgets/header.dart' hide CategoryChip;
 import '../widgets/invite_card.dart';
 import '../widgets/nearby_iteams.dart';
 import '../widgets/section_header.dart';
@@ -26,33 +26,71 @@ class HomeScreen extends ConsumerWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Header(),
-            Gap(26.h),
+           // HomeHeader(categories: categories),
+            //const Header(),
 
-            // ==== Categories chips ====
-            categories.when(
-              data: (cats) => SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Row(
-                  children: [
-                    for (final c in cats)
-                      Row(
+            // categories.when(
+            //   data: (cats) => SingleChildScrollView(
+            //     scrollDirection: Axis.horizontal,
+            //     padding: EdgeInsets.symmetric(horizontal: 16.w),
+            //     child: Row(
+            //       children: [
+            //         for (final c in cats)
+            //           Row(
+            //             children: [
+            //               CategoryChip(
+            //                 text: c.name,
+            //                 icon: _mapIcon(c.icon),
+            //                 color: Color(c.colorHex),
+            //               ),
+            //               Gap(8.w),
+            //             ],
+            //           )
+            //       ],
+            //     ),
+            //   ),
+            //   loading: () => const SizedBox(),
+            //   error: (_, __) => const SizedBox(),
+            // ),
+
+            // ==== Stack with Header & Floating Chips ====
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                const Header(),
+
+                // ---- Category Chips Floating ----
+                Positioned(
+                  bottom: 17.h, // push half outside header
+                  left: 50.w,
+                  right: 0,
+                  child: categories.when(
+                    data: (cats) => SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Row(
                         children: [
-                          CategoryChip(
-                            text: c.name,
-                            icon: _mapIcon(c.icon),
-                            color: Color(c.colorHex),
-                          ),
-                          Gap(8.w),
+                          for (final c in cats)
+                            Row(
+                              children: [
+                                CategoryChip(
+                                  text: c.name,
+                                  icon: _mapIcon(c.icon),
+                                  color: Color(c.colorHex),
+                                ),
+                                Gap(8.w),
+                              ],
+                            ),
                         ],
-                      )
-                  ],
+                      ),
+                    ),
+                    loading: () => const SizedBox(),
+                    error: (_, __) => const SizedBox(),
+                  ),
                 ),
-              ),
-              loading: () => const SizedBox(),
-              error: (_, __) => const SizedBox(),
+              ],
             ),
+
             Gap(20.h),
 
             // ==== Upcoming Events ====
