@@ -1,5 +1,6 @@
 
 
+import 'package:event_booking_app/core/extentions/context_extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends ConsumerWidget {
     final nearby = ref.watch(nearbyProvider);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F6FA),
+      backgroundColor: context.colors.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -91,7 +92,7 @@ class HomeScreen extends ConsumerWidget {
               ],
             ),
 
-            Gap(20.h),
+           // Gap(20.h),
 
             // ==== Upcoming Events ====
             // Padding(
@@ -184,7 +185,7 @@ class HomeScreen extends ConsumerWidget {
             ),
             Gap(20.h),
 
-            Gap(20.h),
+            // Gap(20.h),
 
             // ==== Invite card ====
             Padding(
@@ -217,7 +218,7 @@ class HomeScreen extends ConsumerWidget {
               loading: () => const SizedBox(),
               error: (_, __) => const SizedBox(),
             ),
-            Gap(30.h),
+            Gap(80.h),
           ],
         ),
       ),
