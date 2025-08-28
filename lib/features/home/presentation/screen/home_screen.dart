@@ -1,5 +1,3 @@
-
-
 import 'package:event_booking_app/core/extentions/context_extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

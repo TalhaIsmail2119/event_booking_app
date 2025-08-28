@@ -9,6 +9,9 @@ import 'package:go_router/go_router.dart';import 'package:go_router/go_router.da
 
 import '../../core/navigator/global_keys.dart';
 
+import '../../features/events/presentation/screens/all_events_page.dart';
+import '../../features/events/presentation/screens/empty_events_page.dart';
+import '../../features/events/presentation/screens/events_search_page.dart' show EventSearchPage;
 import '../../features/home/presentation/screen/home_screen.dart';
 import '../../features/main/pages/main_screen.dart';
 import '../../features/menu/menu_screen.dart';
@@ -81,6 +84,24 @@ final appRoute = GoRouter(
         child:  MenuScreen(),
       ),
     ),
+    GoRoute(
+      path: AppRoutes.eventsSearch,
+      name: AppRoutes.eventsSearch,
+      pageBuilder: (context, state) => FadeTransitionPage(
+        key: state.pageKey,
+        // child: const SignUpScreen(),
+        child:  EventSearchPage(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.allEvents,
+      name: AppRoutes.allEvents,
+      pageBuilder: (context, state) => FadeTransitionPage(
+        key: state.pageKey,
+        // child: const SignUpScreen(),
+        child:  AllEventsPage(),
+      ),
+    ),
     // GoRoute(
     //   path: AppRoutes.logout,
     //   name: AppRoutes.logout,
@@ -113,17 +134,17 @@ final appRoute = GoRouter(
             ),
           ],
         ),
-        // StatefulShellBranch(
-        //   routes: [
-        //     GoRoute(
-        //       path: AppRoutes.discover,
-        //       pageBuilder: (context, state) => FadeTransitionPage(
-        //         key: state.pageKey,
-        //         child: const DiscoverPage(),
-        //       ),
-        //     ),
-        //   ],
-        // ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.emptyEvents,
+              pageBuilder: (context, state) => FadeTransitionPage(
+                key: state.pageKey,
+                child: const EmptyEventsPage(),
+              ),
+            ),
+          ],
+        ),
         // StatefulShellBranch(
         //   routes: [
         //     GoRoute(
